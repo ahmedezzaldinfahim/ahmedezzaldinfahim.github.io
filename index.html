@@ -162,8 +162,10 @@
             </div>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="home">Home</a>
+                <a href="#intro" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="intro">Introduction</a>
                 <a href="#services" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="services">Services</a>
                 <a href="#projects" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="projects">Projects</a>
+                <a href="#tech-stack" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="techStack">Tech Stack</a>
                 <a href="#about" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="about">About</a>
                 <a href="#contact" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="contact">Contact</a>
             </nav>
@@ -178,8 +180,10 @@
         </div>
         <div id="mobile-menu" class="md:hidden bg-black bg-opacity-80 backdrop-blur-lg">
             <a href="#home" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="home">Home</a>
+            <a href="#intro" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="intro">Introduction</a>
             <a href="#services" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="services">Services</a>
             <a href="#projects" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="projects">Projects</a>
+            <a href="#tech-stack" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="techStack">Tech Stack</a>
             <a href="#about" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="about">About</a>
             <a href="#contact" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="contact">Contact</a>
         </div>
@@ -195,6 +199,26 @@
                 <a href="#services" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-full text-lg" data-i18n="exploreServicesBtn">
                     Explore Our Services
                 </a>
+            </div>
+        </section>
+
+        <section class="section py-20 fade-in-section" id="intro">
+             <div class="container mx-auto px-6 max-w-5xl">
+                <div class="section-title text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="introTitle">Pioneering the Future of IT Infrastructure</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="introSubtitle">We are a specialized firm dedicated to delivering high-impact, tailored solutions for enterprise IT environments.</p>
+                </div>
+                <div class="intro-content grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="glass-card rounded-lg p-8">
+                        <p class="text-lg leading-relaxed text-[var(--text-muted)] mb-4" data-i18n="introPara1">At EW Solutions, we believe that the backbone of any successful business is a robust, secure, and agile IT infrastructure. Our mission is to empower organizations by building and optimizing the technology systems that power their operations. From on-premise solutions to hybrid and multi-cloud environments, we provide the expertise to navigate today's complex digital landscape.</p>
+                        <p class="text-lg leading-relaxed text-[var(--text-muted)]" data-i18n="introPara2">We don't just implement technology; we forge long-term partnerships. Our collaborative approach ensures that every solution is meticulously planned and executed to align with your strategic business goals, ensuring maximum efficiency and return on investment.</p>
+                    </div>
+                     <div class="glass-card rounded-lg p-8 text-center">
+                        <i class="fas fa-chart-bar text-6xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="businessGrowthTitle">Driving Business Growth Through Technology</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="businessGrowthDesc">Our solutions are designed to not only meet your current needs but also to scale for future growth, enabling you to stay ahead of the competition.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -253,6 +277,7 @@
                 </div>
             </div>
         </section>
+
         <section class="section py-20 fade-in-section" id="projects">
             <div class="container mx-auto px-6">
                 <div class="section-title text-center mb-12">
@@ -274,6 +299,49 @@
                         <i class="fas fa-chart-line text-4xl text-[var(--primary-glow)] mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2" data-i18n="project3Title">Enterprise Mobile App Development</h3>
                         <p class="text-[var(--text-muted)]" data-i18n="project3Desc">Developed a custom mobile application for internal operations, improving team communication and productivity by 30%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section py-20 fade-in-section" id="tech-stack">
+            <div class="container mx-auto px-6">
+                <div class="section-title text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="techStackTitle">Our Technology Stack</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="techStackSubtitle">We leverage industry-leading technologies to build scalable, secure, and robust solutions.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fab fa-windows text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech1Title">Windows Server</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fab fa-linux text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech2Title">Linux OS</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fab fa-aws text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech3Title">AWS & Azure</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fas fa-database text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech4Title">MySQL, Oracle, MSSQL</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fas fa-microchip text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech5Title">VMware & Hyper-V</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fas fa-cisco text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech6Title">Cisco Networking</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fas fa-shield-alt text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech7Title">Firewalls & Security</h3>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <i class="fas fa-terminal text-4xl text-[var(--primary-glow)] mb-4"></i>
+                        <h3 class="text-xl font-semibold" data-i18n="tech8Title">PowerShell & Bash</h3>
                     </div>
                 </div>
             </div>
@@ -380,8 +448,10 @@
                      <h3 class="text-lg font-semibold mb-4" data-i18n="quickLinksTitle">Quick Links</h3>
                      <ul class="space-y-2 text-base text-[var(--text-muted)]">
                         <li><a href="#home" class="hover:text-[var(--primary-glow)]" data-i18n="home">Home</a></li>
+                        <li><a href="#intro" class="hover:text-[var(--primary-glow)]" data-i18n="intro">Introduction</a></li>
                         <li><a href="#about" class="hover:text-[var(--primary-glow)]" data-i18n="about">About Us</a></li>
                         <li><a href="#projects" class="hover:text-[var(--primary-glow)]" data-i18n="projects">Projects</a></li>
+                        <li><a href="#tech-stack" class="hover:text-[var(--primary-glow)]" data-i18n="techStack">Tech Stack</a></li>
                         <li><a href="#contact" class="hover:text-[var(--primary-glow)]" data-i18n="contact">Contact</a></li>
                      </ul>
                 </div>
@@ -405,13 +475,21 @@
         const translations = {
             en: {
                 home: "Home",
+                intro: "Introduction",
                 services: "Services",
                 projects: "Projects",
+                techStack: "Tech Stack",
                 about: "About",
                 contact: "Contact",
                 heroTitle: "Enterprise IT Infrastructure & Solutions",
                 heroSubtitle: "Comprehensive infrastructure, virtualization, networking, security, and automation solutions for the businesses of tomorrow.",
                 exploreServicesBtn: "Explore Our Services",
+                introTitle: "Pioneering the Future of IT Infrastructure",
+                introSubtitle: "We are a specialized firm dedicated to delivering high-impact, tailored solutions for enterprise IT environments.",
+                introPara1: "At EW Solutions, we believe that the backbone of any successful business is a robust, secure, and agile IT infrastructure. Our mission is to empower organizations by building and optimizing the technology systems that power their operations. From on-premise solutions to hybrid and multi-cloud environments, we provide the expertise to navigate today's complex digital landscape.",
+                introPara2: "We don't just implement technology; we forge long-term partnerships. Our collaborative approach ensures that every solution is meticulously planned and executed to align with your strategic business goals, ensuring maximum efficiency and return on investment.",
+                businessGrowthTitle: "Driving Business Growth Through Technology",
+                businessGrowthDesc: "Our solutions are designed to not only meet your current needs but also to scale for future growth, enabling you to stay ahead of the competition.",
                 servicesTitle: "Our Services",
                 servicesSubtitle: "End-to-end IT solutions ensuring your infrastructure is secure, efficient, and future-proof.",
                 service1Title: "Infrastructure & Virtualization",
@@ -440,6 +518,16 @@
                 project2Desc: "Successfully migrated a legacy on-premise system to a scalable cloud environment (AWS/Azure) and consolidated multiple databases, reducing operational costs by 40% and improving data access speeds by 20%.",
                 project3Title: "Enterprise Mobile App Development",
                 project3Desc: "Developed a custom mobile application for internal operations, improving team communication and productivity by 30%.",
+                techStackTitle: "Our Technology Stack",
+                techStackSubtitle: "We leverage industry-leading technologies to build scalable, secure, and robust solutions.",
+                tech1Title: "Windows Server",
+                tech2Title: "Linux OS",
+                tech3Title: "AWS & Azure",
+                tech4Title: "MySQL, Oracle, MSSQL",
+                tech5Title: "VMware & Hyper-V",
+                tech6Title: "Cisco Networking",
+                tech7Title: "Firewalls & Security",
+                tech8Title: "PowerShell & Bash",
                 aboutTitle: "About Us",
                 aboutSubtitle: "Our expertise spans across multiple IT domains to provide comprehensive solutions for enterprise infrastructure.",
                 aboutPara1: "Ew Solutions is a premier provider of enterprise IT infrastructure and services, specializing in creating secure, scalable, and efficient technology environments. With extensive experience across multiple domains, we deliver solutions that drive business success.",
@@ -472,13 +560,21 @@
             },
             ar: {
                 home: "الرئيسية",
+                intro: "مقدمة",
                 services: "خدماتنا",
                 projects: "المشاريع",
+                techStack: "التقنيات",
                 about: "من نحن",
                 contact: "اتصل بنا",
                 heroTitle: "حلول وبنية تحتية لتقنية المعلومات للمؤسسات",
                 heroSubtitle: "حلول شاملة للبنية التحتية، والمحاكاة الافتراضية، والشبكات، والأمن، والأتمتة لأعمال المستقبل.",
                 exploreServicesBtn: "استكشف خدماتنا",
+                introTitle: "ريادة مستقبل البنية التحتية لتكنولوجيا المعلومات",
+                introSubtitle: "نحن شركة متخصصة ملتزمة بتقديم حلول مخصصة وعالية التأثير لبيئات تكنولوجيا المعلومات للمؤسسات.",
+                introPara1: "في إي دبليو سوليوشنز، نؤمن بأن العمود الفقري لأي عمل تجاري ناجح هو بنية تحتية لتكنولوجيا المعلومات قوية، وآمنة، ومرنة. مهمتنا هي تمكين المؤسسات من خلال بناء وتحسين الأنظمة التكنولوجية التي تدعم عملياتها. من الحلول المحلية إلى البيئات السحابية المختلطة والمتعددة، نقدم الخبرة اللازمة للتعامل مع المشهد الرقمي المعقد اليوم.",
+                introPara2: "نحن لا نكتفي بتطبيق التكنولوجيا فحسب؛ بل نبني شراكات طويلة الأمد. يضمن نهجنا التعاوني أن كل حل يتم التخطيط له وتنفيذه بدقة ليتوافق مع أهداف عملك الاستراتيجية، مما يضمن أقصى قدر من الكفاءة والعائد على الاستثمار.",
+                businessGrowthTitle: "تحقيق نمو الأعمال من خلال التكنولوجيا",
+                businessGrowthDesc: "تم تصميم حلولنا ليس فقط لتلبية احتياجاتك الحالية ولكن أيضًا للتوسع من أجل النمو المستقبلي، مما يمكّنك من البقاء في صدارة المنافسة.",
                 servicesTitle: "خدماتنا",
                 servicesSubtitle: "حلول تقنية معلومات متكاملة لضمان بنية تحتية آمنة وفعالة ومواكبة للمستقبل.",
                 service1Title: "البنية التحتية والمحاكاة الافتراضية",
@@ -507,6 +603,16 @@
                 project2Desc: "نجحنا في ترحيل نظام قديم من الأنظمة المحلية إلى بيئة سحابية قابلة للتطوير (AWS/Azure) وقمنا بتوحيد قواعد بيانات متعددة، مما أدى إلى تقليل التكاليف التشغيلية بنسبة 40% وتحسين سرعات الوصول إلى البيانات بنسبة 20%.",
                 project3Title: "تطوير تطبيق جوال للمؤسسات",
                 project3Desc: "قمنا بتطوير تطبيق جوال مخصص للعمليات الداخلية، مما أدى إلى تحسين التواصل والإنتاجية بين الفريق بنسبة 30%.",
+                techStackTitle: "مجموعة التقنيات الخاصة بنا",
+                techStackSubtitle: "نستفيد من التقنيات الرائدة في الصناعة لبناء حلول قابلة للتطوير وآمنة وقوية.",
+                tech1Title: "Windows Server",
+                tech2Title: "Linux OS",
+                tech3Title: "AWS & Azure",
+                tech4Title: "MySQL, Oracle, MSSQL",
+                tech5Title: "VMware & Hyper-V",
+                tech6Title: "Cisco Networking",
+                tech7Title: "جدران الحماية والأمن",
+                tech8Title: "PowerShell & Bash",
                 aboutTitle: "من نحن",
                 aboutSubtitle: "خبرتنا تمتد عبر مجالات تقنية معلومات متعددة لتقديم حلول شاملة للبنية التحتية للمؤسسات.",
                 aboutPara1: "إي دبليو سوليوشنز (Ew Solutions) هي مزود رائد للبنية التحتية وخدمات تقنية المعلومات للمؤسسات، متخصص في إنشاء بيئات تكنولوجية آمنة، قابلة للتطوير، وفعالة. بفضل خبرتنا الواسعة في مجالات متعددة، نقدم حلولًا تدفع نجاح الأعمال.",
