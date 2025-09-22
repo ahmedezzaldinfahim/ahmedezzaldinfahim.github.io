@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-
     <style>
         /* Custom styles to enhance the futuristic theme */
         :root {
@@ -24,7 +23,7 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             font-family: 'Exo 2', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
         /* --- Animated Background --- */
@@ -89,6 +88,10 @@
             margin: 1rem auto 0;
             border-radius: 2px;
         }
+        /* RTL-specific alignment for the underline */
+        [dir="rtl"] .section-title h2::after {
+            margin: 1rem auto 0;
+        }
         
         /* --- Scroll Animations --- */
         .fade-in-section {
@@ -110,7 +113,7 @@
             transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
         }
         #mobile-menu.is-open {
-            max-height: 500px; /* A value larger than the max height of the menu */
+            max-height: 500px;
         }
         
         /* Form success message animation */
@@ -129,17 +132,26 @@
             color: var(--text-muted);
             opacity: 0.7;
         }
-        input:focus::placeholder, textarea:focus::placeholder {
+        input:focus::placeholder, textarea::focus::placeholder {
             opacity: 0.4;
         }
 
         /* Increase readability for service/project descriptions */
         .service-card p {
-            font-size: 1rem; /* Adjusting from text-sm to a readable size */
+            font-size: 1rem;
+        }
+
+        /* RTL-specific adjustments */
+        [dir="rtl"] .logo {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .md\:flex {
+            flex-direction: row-reverse;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased" dir="ltr">
     <canvas id="matrix-bg"></canvas>
 
     <header class="bg-black bg-opacity-50 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-cyan-400/20">
@@ -149,22 +161,27 @@
                 <h1 class="text-2xl font-bold tracking-wider">EW <span class="text-[var(--primary-glow)]">Solutions</span></h1>
             </div>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="hover:text-[var(--primary-glow)] transition-colors duration-300">Home</a>
-                <a href="#services" class="hover:text-[var(--primary-glow)] transition-colors duration-300">Services</a>
-                <a href="#projects" class="hover:text-[var(--primary-glow)] transition-colors duration-300">Projects</a>
-                <a href="#about" class="hover:text-[var(--primary-glow)] transition-colors duration-300">About</a>
-                <a href="#contact" class="hover:text-[var(--primary-glow)] transition-colors duration-300">Contact</a>
+                <a href="#home" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="home">Home</a>
+                <a href="#services" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="services">Services</a>
+                <a href="#projects" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="projects">Projects</a>
+                <a href="#about" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="about">About</a>
+                <a href="#contact" class="hover:text-[var(--primary-glow)] transition-colors duration-300" data-i18n="contact">Contact</a>
             </nav>
-            <button id="mobile-menu-btn" class="md:hidden text-2xl">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="flex items-center space-x-4">
+                <button id="lang-ar" class="text-sm font-bold text-gray-400 hover:text-[var(--primary-glow)] transition-colors">عربي</button>
+                <span class="text-gray-500">|</span>
+                <button id="lang-en" class="text-sm font-bold text-white hover:text-gray-400 transition-colors">EN</button>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         <div id="mobile-menu" class="md:hidden bg-black bg-opacity-80 backdrop-blur-lg">
-            <a href="#home" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors">Home</a>
-            <a href="#services" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors">Services</a>
-            <a href="#projects" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors">Projects</a>
-            <a href="#about" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors">About</a>
-            <a href="#contact" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors">Contact</a>
+            <a href="#home" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="home">Home</a>
+            <a href="#services" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="services">Services</a>
+            <a href="#projects" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="projects">Projects</a>
+            <a href="#about" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="about">About</a>
+            <a href="#contact" class="block text-center py-3 px-6 hover:bg-cyan-400/20 transition-colors" data-i18n="contact">Contact</a>
         </div>
     </header>
 
@@ -172,10 +189,10 @@
         <section class="hero min-h-screen flex items-center justify-center text-center pt-24" id="home">
             <div class="container mx-auto px-6">
                 <h2 id="hero-title" class="text-4xl md:text-6xl font-bold mb-4 tracking-wide typing-cursor"></h2>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-[var(--text-muted)]">
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-[var(--text-muted)]" data-i18n="heroSubtitle">
                     Comprehensive infrastructure, virtualization, networking, security, and automation solutions for the businesses of tomorrow.
                 </p>
-                <a href="#services" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-full text-lg">
+                <a href="#services" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-full text-lg" data-i18n="exploreServicesBtn">
                     Explore Our Services
                 </a>
             </div>
@@ -184,151 +201,151 @@
         <section class="section py-20 fade-in-section" id="services">
             <div class="container mx-auto px-6">
                 <div class="section-title text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Our Services</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]">End-to-end IT solutions ensuring your infrastructure is secure, efficient, and future-proof.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="servicesTitle">Our Services</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="servicesSubtitle">End-to-end IT solutions ensuring your infrastructure is secure, efficient, and future-proof.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-server text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Infrastructure & Virtualization</h3>
-                        <p class="text-[var(--text-muted)]">Windows Server, Linux, VMware, Hyper-V implementation for enterprise-grade virtual environments.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service1Title">Infrastructure & Virtualization</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service1Desc">Windows Server, Linux, VMware, Hyper-V implementation for enterprise-grade virtual environments.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-network-wired text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Networking & Security</h3>
-                        <p class="text-[var(--text-muted)]">TCP/IP, VLANs, Firewalls, and Cisco solutions for secure and reliable network infrastructure.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service2Title">Networking & Security</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service2Desc">TCP/IP, VLANs, Firewalls, and Cisco solutions for secure and reliable network infrastructure.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-chart-line text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Monitoring & ITSM</h3>
-                        <p class="text-[var(--text-muted)]">Nagios, Zabbix, SolarWinds monitoring with ITIL and Service Desk Management.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service3Title">Monitoring & ITSM</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service3Desc">Nagios, Zabbix, SolarWinds monitoring with ITIL and Service Desk Management.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-code text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Automation & Scripting</h3>
-                        <p class="text-[var(--text-muted)]">PowerShell and Bash automation to streamline operations and reduce manual intervention.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service4Title">Automation & Scripting</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service4Desc">PowerShell and Bash automation to streamline operations and reduce manual intervention.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-cloud text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Cloud & Databases</h3>
-                        <p class="text-[var(--text-muted)]">AWS, Azure solutions with MySQL, Oracle, MSSQL database management and optimization.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service5Title">Cloud & Databases</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service5Desc">AWS, Azure solutions with MySQL, Oracle, MSSQL database management and optimization.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-headset text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Call Center Infrastructure</h3>
-                        <p class="text-[var(--text-muted)]">VoIP systems, CRM integration, and SLA optimization for high-performance customer service.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service6Title">Call Center Infrastructure</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service6Desc">VoIP systems, CRM integration, and SLA optimization for high-performance customer service.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-chalkboard-teacher text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">IT Training & Certification</h3>
-                        <p class="text-[var(--text-muted)]">Corporate training programs and certification courses to upskill your team in the latest technologies.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service7Title">IT Training & Certification</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service7Desc">Corporate training programs and certification courses to upskill your team in the latest technologies.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-mobile-alt text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Mobile App Development</h3>
-                        <p class="text-[var(--text-muted)]">Custom native and cross-platform mobile application development for iOS and Android.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service8Title">Mobile App Development</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service8Desc">Custom native and cross-platform mobile application development for iOS and Android.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-cogs text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">SaaS Solutions</h3>
-                        <p class="text-[var(--text-muted)]">Developing and deploying scalable, secure, and robust Software as a Service products.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="service9Title">SaaS Solutions</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="service9Desc">Developing and deploying scalable, secure, and robust Software as a Service products.</p>
                     </div>
                 </div>
             </div>
         </section>
-		<section class="section py-20 fade-in-section" id="projects">
+        <section class="section py-20 fade-in-section" id="projects">
             <div class="container mx-auto px-6">
                 <div class="section-title text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Projects Highlights</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]">Our successful implementations demonstrate our expertise in delivering robust IT solutions.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="projectsTitle">Projects Highlights</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="projectsSubtitle">Our successful implementations demonstrate our expertise in delivering robust IT solutions.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-server text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">SLA Optimization & SaaS Integration</h3>
-                        <p class="text-[var(--text-muted)]">Implemented comprehensive SLA monitoring and optimization for enterprise call center infrastructure, and integrated key SaaS platforms to streamline operations.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="project1Title">SLA Optimization & SaaS Integration</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="project1Desc">Implemented comprehensive SLA monitoring and optimization for enterprise call center infrastructure, and integrated key SaaS platforms to streamline operations.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-database text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Cloud Migration & Database Consolidation</h3>
-                        <p class="text-[var(--text-muted)]">Successfully migrated a legacy on-premise system to a scalable cloud environment (AWS/Azure) and consolidated multiple databases, reducing operational costs by 40% and improving data access speeds by 20%.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="project2Title">Cloud Migration & Database Consolidation</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="project2Desc">Successfully migrated a legacy on-premise system to a scalable cloud environment (AWS/Azure) and consolidated multiple databases, reducing operational costs by 40% and improving data access speeds by 20%.</p>
                     </div>
                     <div class="service-card glass-card rounded-lg p-8 text-center">
                         <i class="fas fa-chart-line text-4xl text-[var(--primary-glow)] mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Enterprise Mobile App Development</h3>
-                        <p class="text-[var(--text-muted)]">Developed a custom mobile application for internal operations, improving team communication and productivity by 30%.</p>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="project3Title">Enterprise Mobile App Development</h3>
+                        <p class="text-[var(--text-muted)]" data-i18n="project3Desc">Developed a custom mobile application for internal operations, improving team communication and productivity by 30%.</p>
                     </div>
                 </div>
             </div>
         </section>
-		
+        
         <section class="section py-20 fade-in-section" id="about">
             <div class="container mx-auto px-6">
                 <div class="section-title text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">About Us</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]">Our expertise spans across multiple IT domains to provide comprehensive solutions for enterprise infrastructure.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="aboutTitle">About Us</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="aboutSubtitle">Our expertise spans across multiple IT domains to provide comprehensive solutions for enterprise infrastructure.</p>
                 </div>
                 <div class="about-content grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <div class="about-text space-y-6">
-                        <p class="text-lg leading-relaxed text-[var(--text-muted)]">Ew Solutions is a premier provider of enterprise IT infrastructure and services, specializing in creating secure, scalable, and efficient technology environments. With extensive experience across multiple domains, we deliver solutions that drive business success.</p>
-                        <p class="text-lg leading-relaxed text-[var(--text-muted)]">Our team of certified professionals brings deep expertise in infrastructure, virtualization, networking, security, monitoring, automation, cloud computing, SaaS, mobile development, and database management. We work with businesses of all sizes to implement robust IT solutions tailored to their specific needs.</p>
-                        <p class="text-lg leading-relaxed text-[var(--text-muted)]">Our approach combines technical excellence with business understanding, ensuring that every solution we deliver not only meets technical requirements but also supports strategic business objectives.</p>
+                        <p class="text-lg leading-relaxed text-[var(--text-muted)]" data-i18n="aboutPara1">Ew Solutions is a premier provider of enterprise IT infrastructure and services, specializing in creating secure, scalable, and efficient technology environments. With extensive experience across multiple domains, we deliver solutions that drive business success.</p>
+                        <p class="text-lg leading-relaxed text-[var(--text-muted)]" data-i18n="aboutPara2">Our team of certified professionals brings deep expertise in infrastructure, virtualization, networking, security, monitoring, automation, cloud computing, SaaS, mobile development, and database management. We work with businesses of all sizes to implement robust IT solutions tailored to their specific needs.</p>
+                        <p class="text-lg leading-relaxed text-[var(--text-muted)]" data-i18n="aboutPara3">Our approach combines technical excellence with business understanding, ensuring that every solution we deliver not only meets technical requirements but also supports strategic business objectives.</p>
                     </div>
                     <div class="stats grid grid-cols-1 sm:grid-cols-3 gap-8 text-center lg:py-16">
                         <div class="stat-item glass-card p-6 rounded-lg">
                             <h3 class="text-4xl font-bold text-[var(--primary-glow)] mb-2">15+</h3>
-                            <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Years Experience</p>
+                            <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]" data-i18n="yearsExp">Years Experience</p>
                         </div>
                         <div class="stat-item glass-card p-6 rounded-lg">
                             <h3 class="text-4xl font-bold text-[var(--primary-glow)] mb-2">200+</h3>
-                            <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Projects Completed</p>
+                            <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]" data-i18n="projectsCompleted">Projects Completed</p>
                         </div>
                         <div class="stat-item glass-card p-6 rounded-lg">
                             <h3 class="text-4xl font-bold text-[var(--primary-glow)] mb-2">98%</h3>
-                            <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Client Satisfaction</p>
+                            <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]" data-i18n="clientSatisfaction">Client Satisfaction</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-		
+        
         <section class="section py-20 bg-black bg-opacity-20 fade-in-section" id="contact">
             <div class="container mx-auto px-6">
                 <div class="section-title text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Contact Us</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]">Get in touch to discuss your IT infrastructure needs.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="contactTitle">Contact Us</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="contactSubtitle">Get in touch to discuss your IT infrastructure needs.</p>
                 </div>
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 glass-card p-8 rounded-lg">
                     <div class="contact-info space-y-6">
-                         <h3 class="text-2xl font-semibold">Get In Touch</h3>
+                         <h3 class="text-2xl font-semibold" data-i18n="getInTouch">Get In Touch</h3>
                          <div class="flex items-start gap-4">
                             <i class="fas fa-map-marker-alt text-xl text-[var(--primary-glow)] mt-1"></i>
                             <div>
-                                <h4 class="font-semibold">Location</h4>
-                                <p class="text-[var(--text-muted)]">123 TAGAMOO, Suite 100<br>Cairo, Egypt</p>
+                                <h4 class="font-semibold" data-i18n="locationTitle">Location</h4>
+                                <p class="text-[var(--text-muted)]" data-i18n="locationAddress">123 TAGAMOO, Suite 100<br>Cairo, Egypt</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <i class="fas fa-phone text-xl text-[var(--primary-glow)] mt-1"></i>
                             <div>
-                                <h4 class="font-semibold">Phone</h4>
-                                <p class="text-[var(--text-muted)]">+20 (155) 949-9959</p>
+                                <h4 class="font-semibold" data-i18n="phoneTitle">Phone</h4>
+                                <p class="text-[var(--text-muted)]" data-i18n="phoneNumber">+20 (155) 949-9959</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <i class="fas fa-envelope text-xl text-[var(--primary-glow)] mt-1"></i>
                             <div>
-                                <h4 class="font-semibold">Email</h4>
-                                <p class="text-[var(--text-muted)]">info@ewsolutions.com</p>
+                                <h4 class="font-semibold" data-i18n="emailTitle">Email</h4>
+                                <p class="text-[var(--text-muted)]" data-i18n="emailAddress">info@ewsolutions.com</p>
                             </div>
                         </div>
                     </div>
                     <form id="contact-form" class="space-y-4">
-                        <input type="text" placeholder="Your Name" required class="w-full p-3 bg-gray-900/50 border border-cyan-400/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-glow)] transition-all">
-                        <input type="email" placeholder="Your Email" required class="w-full p-3 bg-gray-900/50 border border-cyan-400/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-glow)] transition-all">
-                        <textarea placeholder="Your Message" rows="5" required class="w-full p-3 bg-gray-900/50 border border-cyan-400/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-glow)] transition-all resize-none"></textarea>
-                        <button type="submit" class="w-full btn-glow text-white font-bold py-3 px-8 rounded-full">Send Message</button>
-                        <p id="form-success-msg" class="text-center text-green-400 mt-4 form-success-msg">Thank you! Your message has been sent.</p>
+                        <input type="text" data-i18n-placeholder="yourNamePlaceholder" placeholder="Your Name" required class="w-full p-3 bg-gray-900/50 border border-cyan-400/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-glow)] transition-all">
+                        <input type="email" data-i18n-placeholder="yourEmailPlaceholder" placeholder="Your Email" required class="w-full p-3 bg-gray-900/50 border border-cyan-400/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-glow)] transition-all">
+                        <textarea data-i18n-placeholder="yourMessagePlaceholder" placeholder="Your Message" rows="5" required class="w-full p-3 bg-gray-900/50 border border-cyan-400/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-glow)] transition-all resize-none"></textarea>
+                        <button type="submit" class="w-full btn-glow text-white font-bold py-3 px-8 rounded-full" data-i18n="sendMessageBtn">Send Message</button>
+                        <p id="form-success-msg" class="text-center text-green-400 mt-4 form-success-msg" data-i18n="successMsg">Thank you! Your message has been sent.</p>
                     </form>
                 </div>
             </div>
@@ -340,7 +357,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div class="footer-col">
                      <h3 class="text-xl font-bold mb-4">EW <span class="text-[var(--primary-glow)]">Solutions</span></h3>
-                     <p class="text-[var(--text-muted)] text-base">Pioneering the future of enterprise IT infrastructure and services.</p>
+                     <p class="text-[var(--text-muted)] text-base" data-i18n="footerTagline">Pioneering the future of enterprise IT infrastructure and services.</p>
                      <div class="socials flex gap-4 mt-4">
                         <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/30 transition-colors"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/30 transition-colors"><i class="fab fa-twitter"></i></a>
@@ -348,32 +365,32 @@
                      </div>
                 </div>
                  <div class="footer-col">
-                     <h3 class="text-lg font-semibold mb-4">Services</h3>
+                     <h3 class="text-lg font-semibold mb-4" data-i18n="servicesFooterTitle">Services</h3>
                      <ul class="space-y-2 text-base text-[var(--text-muted)]">
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">Infrastructure</a></li>
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">Networking & Security</a></li>
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">Automation</a></li>
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">Cloud & Databases</a></li>
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">IT Training</a></li>
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">Mobile App Dev</a></li>
-                        <li><a href="#" class="hover:text-[var(--primary-glow)]">SaaS Solutions</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service1Title">Infrastructure</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service2Title">Networking & Security</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service4Title">Automation</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service5Title">Cloud & Databases</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service7Title">IT Training</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service8Title">Mobile App Dev</a></li>
+                        <li><a href="#" class="hover:text-[var(--primary-glow)]" data-i18n="service9Title">SaaS Solutions</a></li>
                      </ul>
                 </div>
                  <div class="footer-col">
-                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                     <h3 class="text-lg font-semibold mb-4" data-i18n="quickLinksTitle">Quick Links</h3>
                      <ul class="space-y-2 text-base text-[var(--text-muted)]">
-                        <li><a href="#home" class="hover:text-[var(--primary-glow)]">Home</a></li>
-                        <li><a href="#about" class="hover:text-[var(--primary-glow)]">About Us</a></li>
-                        <li><a href="#projects" class="hover:text-[var(--primary-glow)]">Projects</a></li>
-                        <li><a href="#contact" class="hover:text-[var(--primary-glow)]">Contact</a></li>
+                        <li><a href="#home" class="hover:text-[var(--primary-glow)]" data-i18n="home">Home</a></li>
+                        <li><a href="#about" class="hover:text-[var(--primary-glow)]" data-i18n="about">About Us</a></li>
+                        <li><a href="#projects" class="hover:text-[var(--primary-glow)]" data-i18n="projects">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-[var(--primary-glow)]" data-i18n="contact">Contact</a></li>
                      </ul>
                 </div>
                 <div class="footer-col">
-                     <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
-                     <p class="text-[var(--text-muted)] text-base mb-4">Subscribe for the latest updates.</p>
+                     <h3 class="text-lg font-semibold mb-4" data-i18n="newsletterTitle">Newsletter</h3>
+                     <p class="text-[var(--text-muted)] text-base mb-4" data-i18n="newsletterDesc">Subscribe for the latest updates.</p>
                      <form class="flex">
-                         <input type="email" placeholder="Your Email" class="flex-grow p-2 bg-gray-900/50 border border-cyan-400/30 rounded-l-md focus:outline-none focus:ring-1 focus:ring-[var(--primary-glow)]">
-                         <button class="bg-[var(--primary-glow)] text-black px-4 rounded-r-md font-bold text-sm">SUB</button>
+                         <input type="email" data-i18n-placeholder="newsletterPlaceholder" placeholder="Your Email" class="flex-grow p-2 bg-gray-900/50 border border-cyan-400/30 rounded-l-md focus:outline-none focus:ring-1 focus:ring-[var(--primary-glow)]">
+                         <button class="bg-[var(--primary-glow)] text-black px-4 rounded-r-md font-bold text-sm" data-i18n="newsletterBtn">SUB</button>
                      </form>
                 </div>
             </div>
@@ -385,26 +402,203 @@
 
 
     <script>
+        const translations = {
+            en: {
+                home: "Home",
+                services: "Services",
+                projects: "Projects",
+                about: "About",
+                contact: "Contact",
+                heroTitle: "Enterprise IT Infrastructure & Solutions",
+                heroSubtitle: "Comprehensive infrastructure, virtualization, networking, security, and automation solutions for the businesses of tomorrow.",
+                exploreServicesBtn: "Explore Our Services",
+                servicesTitle: "Our Services",
+                servicesSubtitle: "End-to-end IT solutions ensuring your infrastructure is secure, efficient, and future-proof.",
+                service1Title: "Infrastructure & Virtualization",
+                service1Desc: "Windows Server, Linux, VMware, Hyper-V implementation for enterprise-grade virtual environments.",
+                service2Title: "Networking & Security",
+                service2Desc: "TCP/IP, VLANs, Firewalls, and Cisco solutions for secure and reliable network infrastructure.",
+                service3Title: "Monitoring & ITSM",
+                service3Desc: "Nagios, Zabbix, SolarWinds monitoring with ITIL and Service Desk Management.",
+                service4Title: "Automation & Scripting",
+                service4Desc: "PowerShell and Bash automation to streamline operations and reduce manual intervention.",
+                service5Title: "Cloud & Databases",
+                service5Desc: "AWS, Azure solutions with MySQL, Oracle, MSSQL database management and optimization.",
+                service6Title: "Call Center Infrastructure",
+                service6Desc: "VoIP systems, CRM integration, and SLA optimization for high-performance customer service.",
+                service7Title: "IT Training & Certification",
+                service7Desc: "Corporate training programs and certification courses to upskill your team in the latest technologies.",
+                service8Title: "Mobile App Development",
+                service8Desc: "Custom native and cross-platform mobile application development for iOS and Android.",
+                service9Title: "SaaS Solutions",
+                service9Desc: "Developing and deploying scalable, secure, and robust Software as a Service products.",
+                projectsTitle: "Projects Highlights",
+                projectsSubtitle: "Our successful implementations demonstrate our expertise in delivering robust IT solutions.",
+                project1Title: "SLA Optimization & SaaS Integration",
+                project1Desc: "Implemented comprehensive SLA monitoring and optimization for enterprise call center infrastructure, and integrated key SaaS platforms to streamline operations.",
+                project2Title: "Cloud Migration & Database Consolidation",
+                project2Desc: "Successfully migrated a legacy on-premise system to a scalable cloud environment (AWS/Azure) and consolidated multiple databases, reducing operational costs by 40% and improving data access speeds by 20%.",
+                project3Title: "Enterprise Mobile App Development",
+                project3Desc: "Developed a custom mobile application for internal operations, improving team communication and productivity by 30%.",
+                aboutTitle: "About Us",
+                aboutSubtitle: "Our expertise spans across multiple IT domains to provide comprehensive solutions for enterprise infrastructure.",
+                aboutPara1: "Ew Solutions is a premier provider of enterprise IT infrastructure and services, specializing in creating secure, scalable, and efficient technology environments. With extensive experience across multiple domains, we deliver solutions that drive business success.",
+                aboutPara2: "Our team of certified professionals brings deep expertise in infrastructure, virtualization, networking, security, monitoring, automation, cloud computing, SaaS, mobile development, and database management. We work with businesses of all sizes to implement robust IT solutions tailored to their specific needs.",
+                aboutPara3: "Our approach combines technical excellence with business understanding, ensuring that every solution we deliver not only meets technical requirements but also supports strategic business objectives.",
+                yearsExp: "Years Experience",
+                projectsCompleted: "Projects Completed",
+                clientSatisfaction: "Client Satisfaction",
+                contactTitle: "Contact Us",
+                contactSubtitle: "Get in touch to discuss your IT infrastructure needs.",
+                getInTouch: "Get In Touch",
+                locationTitle: "Location",
+                locationAddress: "123 TAGAMOO, Suite 100\nCairo, Egypt",
+                phoneTitle: "Phone",
+                phoneNumber: "+20 (155) 949-9959",
+                emailTitle: "Email",
+                emailAddress: "info@ewsolutions.com",
+                yourNamePlaceholder: "Your Name",
+                yourEmailPlaceholder: "Your Email",
+                yourMessagePlaceholder: "Your Message",
+                sendMessageBtn: "Send Message",
+                successMsg: "Thank you! Your message has been sent.",
+                footerTagline: "Pioneering the future of enterprise IT infrastructure and services.",
+                servicesFooterTitle: "Services",
+                quickLinksTitle: "Quick Links",
+                newsletterTitle: "Newsletter",
+                newsletterDesc: "Subscribe for the latest updates.",
+                newsletterPlaceholder: "Your Email",
+                newsletterBtn: "SUB"
+            },
+            ar: {
+                home: "الرئيسية",
+                services: "خدماتنا",
+                projects: "المشاريع",
+                about: "من نحن",
+                contact: "اتصل بنا",
+                heroTitle: "حلول وبنية تحتية لتقنية المعلومات للمؤسسات",
+                heroSubtitle: "حلول شاملة للبنية التحتية، والمحاكاة الافتراضية، والشبكات، والأمن، والأتمتة لأعمال المستقبل.",
+                exploreServicesBtn: "استكشف خدماتنا",
+                servicesTitle: "خدماتنا",
+                servicesSubtitle: "حلول تقنية معلومات متكاملة لضمان بنية تحتية آمنة وفعالة ومواكبة للمستقبل.",
+                service1Title: "البنية التحتية والمحاكاة الافتراضية",
+                service1Desc: "تطبيق أنظمة Windows Server وLinux وVMware وHyper-V لبيئات افتراضية بمستوى المؤسسات.",
+                service2Title: "الشبكات والأمن",
+                service2Desc: "حلول TCP/IP، وشبكات VLAN، وجدران الحماية، وCisco لبنية تحتية آمنة وموثوقة للشبكات.",
+                service3Title: "المراقبة وإدارة خدمات تكنولوجيا المعلومات",
+                service3Desc: "مراقبة باستخدام Nagios وZabbix وSolarWinds مع إدارة خدمات تقنية المعلومات ITIL ومكتب الخدمة.",
+                service4Title: "الأتمتة والبرمجة النصية",
+                service4Desc: "أتمتة باستخدام PowerShell وBash لتبسيط العمليات وتقليل التدخل اليدوي.",
+                service5Title: "السحابة وقواعد البيانات",
+                service5Desc: "حلول AWS وAzure مع إدارة وتحسين قواعد بيانات MySQL وOracle وMSSQL.",
+                service6Title: "بنية مراكز الاتصال",
+                service6Desc: "أنظمة VoIP، ودمج أنظمة إدارة علاقات العملاء، وتحسين اتفاقيات مستوى الخدمة لأداء عالٍ في خدمة العملاء.",
+                service7Title: "التدريب وشهادات تكنولوجيا المعلومات",
+                service7Desc: "برامج تدريب مؤسسية ودورات للحصول على الشهادات لرفع مستوى فريقك في أحدث التقنيات.",
+                service8Title: "تطوير تطبيقات الجوال",
+                service8Desc: "تطوير تطبيقات جوال مخصصة لنظامي iOS وAndroid (سواء كانت أصلية أو عبر منصات متعددة).",
+                service9Title: "حلول البرامج كخدمة (SaaS)",
+                service9Desc: "تطوير ونشر منتجات برمجيات كخدمة قابلة للتطوير، وآمنة، وقوية.",
+                projectsTitle: "أبرز المشاريع",
+                projectsSubtitle: "توضح مشاريعنا الناجحة خبرتنا في تقديم حلول تقنية معلومات قوية.",
+                project1Title: "تحسين اتفاقيات مستوى الخدمة ودمج حلول SaaS",
+                project1Desc: "قمنا بتطبيق نظام شامل لمراقبة وتحسين اتفاقيات مستوى الخدمة (SLA) لبنية مركز الاتصال في إحدى المؤسسات، ودمجنا منصات SaaS رئيسية لتبسيط العمليات.",
+                project2Title: "الترحيل السحابي وتوحيد قواعد البيانات",
+                project2Desc: "نجحنا في ترحيل نظام قديم من الأنظمة المحلية إلى بيئة سحابية قابلة للتطوير (AWS/Azure) وقمنا بتوحيد قواعد بيانات متعددة، مما أدى إلى تقليل التكاليف التشغيلية بنسبة 40% وتحسين سرعات الوصول إلى البيانات بنسبة 20%.",
+                project3Title: "تطوير تطبيق جوال للمؤسسات",
+                project3Desc: "قمنا بتطوير تطبيق جوال مخصص للعمليات الداخلية، مما أدى إلى تحسين التواصل والإنتاجية بين الفريق بنسبة 30%.",
+                aboutTitle: "من نحن",
+                aboutSubtitle: "خبرتنا تمتد عبر مجالات تقنية معلومات متعددة لتقديم حلول شاملة للبنية التحتية للمؤسسات.",
+                aboutPara1: "إي دبليو سوليوشنز (Ew Solutions) هي مزود رائد للبنية التحتية وخدمات تقنية المعلومات للمؤسسات، متخصص في إنشاء بيئات تكنولوجية آمنة، قابلة للتطوير، وفعالة. بفضل خبرتنا الواسعة في مجالات متعددة، نقدم حلولًا تدفع نجاح الأعمال.",
+                aboutPara2: "فريقنا من المهنيين المعتمدين يمتلك خبرة عميقة في البنية التحتية، والمحاكاة الافتراضية، والشبكات، والأمن، والمراقبة، والأتمتة، والحوسبة السحابية، وحلول SaaS، وتطوير الجوال، وإدارة قواعد البيانات. نعمل مع الشركات من جميع الأحجام لتطبيق حلول تقنية معلومات قوية ومصممة خصيصًا لتلبية احتياجاتهم.",
+                aboutPara3: "نهجنا يجمع بين التميز التقني والفهم للأعمال، مما يضمن أن كل حل نقدمه لا يلبي المتطلبات التقنية فحسب، بل يدعم أيضًا الأهداف الاستراتيجية للأعمال.",
+                yearsExp: "سنوات خبرة",
+                projectsCompleted: "مشروع مكتمل",
+                clientSatisfaction: "رضا العملاء",
+                contactTitle: "اتصل بنا",
+                contactSubtitle: "تواصل معنا لمناقشة احتياجاتك في مجال البنية التحتية لتقنية المعلومات.",
+                getInTouch: "تواصل معنا",
+                locationTitle: "الموقع",
+                locationAddress: "123 التجمع، جناح 100<br>القاهرة، مصر",
+                phoneTitle: "الهاتف",
+                phoneNumber: "+20 (155) 949-9959",
+                emailTitle: "البريد الإلكتروني",
+                emailAddress: "info@ewsolutions.com",
+                yourNamePlaceholder: "اسمك",
+                yourEmailPlaceholder: "بريدك الإلكتروني",
+                yourMessagePlaceholder: "رسالتك",
+                sendMessageBtn: "إرسال الرسالة",
+                successMsg: "شكراً لك! لقد تم إرسال رسالتك بنجاح.",
+                footerTagline: "ريادة مستقبل البنية التحتية وخدمات تكنولوجيا المعلومات للمؤسسات.",
+                servicesFooterTitle: "الخدمات",
+                quickLinksTitle: "روابط سريعة",
+                newsletterTitle: "النشرة الإخبارية",
+                newsletterDesc: "اشترك لتصلك آخر المستجدات.",
+                newsletterPlaceholder: "بريدك الإلكتروني",
+                newsletterBtn: "اشتراك"
+            }
+        };
+
+        let currentLang = 'en';
+        const typingSpeed = 70;
+        let charIndex = 0;
+        let titleText = translations[currentLang].heroTitle;
+        const heroTitleEl = document.getElementById('hero-title');
+        
+        function typeHeroTitle() {
+            if (charIndex < titleText.length) {
+                heroTitleEl.textContent += titleText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeHeroTitle, typingSpeed);
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update all elements with data-i18n-placeholder attribute
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Reset and restart the typing effect
+            heroTitleEl.textContent = '';
+            charIndex = 0;
+            titleText = translations[lang].heroTitle;
+            typeHeroTitle();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            
+            // Initial call to set the language
+            setLanguage(currentLang);
+
             // --- Matrix Background Effect ---
             const canvas = document.getElementById('matrix-bg');
             const ctx = canvas.getContext('2d');
-
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-
             const letters = '0101010Ew3ah0101010';
             const fontSize = 16;
             const columns = canvas.width / fontSize;
             const drops = Array(Math.floor(columns)).fill(1);
-
             function drawMatrix() {
                 ctx.fillStyle = 'rgba(10, 15, 30, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = 'rgba(0, 242, 255, 0.7)';
                 ctx.font = fontSize + 'px Roboto Mono';
-
                 for (let i = 0; i < drops.length; i++) {
                     const text = letters.charAt(Math.floor(Math.random() * letters.length));
                     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -419,34 +613,22 @@
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             });
-
-            // --- Hero Title Typing Effect ---
-            const heroTitleEl = document.getElementById('hero-title');
-            const titleText = "Enterprise IT Infrastructure & Solutions";
-            let charIndex = 0;
-            function typeHeroTitle() {
-                if (charIndex < titleText.length) {
-                    heroTitleEl.textContent += titleText.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeHeroTitle, 70);
-                }
-            }
-            typeHeroTitle();
             
+            // --- Language Switcher Event Listeners ---
+            document.getElementById('lang-ar').addEventListener('click', () => setLanguage('ar'));
+            document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+
             // --- Mobile Menu Toggle ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('is-open');
             });
-
-            // Close mobile menu on link click
             mobileMenu.addEventListener('click', (e) => {
                 if(e.target.tagName === 'A') {
                     mobileMenu.classList.remove('is-open');
                 }
             });
-
 
             // --- Smooth Scrolling for all links ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -455,10 +637,9 @@
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const headerOffset = 80; // height of fixed header
+                        const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: "smooth"
@@ -477,7 +658,6 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             sections.forEach(section => {
                 observer.observe(section);
             });
@@ -488,12 +668,11 @@
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // In a real app, you'd send data to a server here
                     successMsg.classList.add('is-visible');
                     this.reset();
                     setTimeout(() => {
                          successMsg.classList.remove('is-visible');
-                    }, 5000); // Hide message after 5 seconds
+                    }, 5000);
                 });
             }
         });
